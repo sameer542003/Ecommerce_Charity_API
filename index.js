@@ -1,28 +1,30 @@
 const express = require("express")
 const app = express()
+app.use(express.json());
 const mongoose = require("mongoose")
 require("dotenv").config()
 const port = process.env.PORT || 8080
-const url = process.env.URL
 
-function connectToDB(){
+const userRoutes=require("./routes/user")
+
+function connectToMongoDB() {
     try {
-        mongoose.connect(url)
-        console.log("connected to DB✅");
+        console.log("connected to the database✅");
+        mongoose.connect("mongodb://localhost:27017/E_commerce_charity")
+
     } catch (err) {
-        console.log("error connecting to DB");
+        console.log(err);
+
     }
 }
+app.use("/api/users",userRoutes);
 
 
-app.get("/",(req,res)=>{
-    res.send("hello world")
+app.get("/", (req, res) => {
+    res.send("Welcome to E-commerce charity")
 })
+app.listen(port, () => {
+    connectToMongoDB()
+    console.log("server is running at port 3000");
 
-
-
-
-app.listen(port,()=>{
-    connectToDB()
-    console.log(`server running on port ${port}`);
 })
