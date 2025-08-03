@@ -27,8 +27,6 @@ const userFieldValidationsLogin=[
     .notEmpty().withMessage("Email or mobile no is required"),
      body("password")
     .notEmpty().withMessage("Password is required")
-    .isAlphanumeric().withMessage("the password should be either number or chatacter")
-    .isLength({ min: 6 },{max:12}).withMessage("Password must be at least 6 or 12  characters long"),
 
 
 ]
