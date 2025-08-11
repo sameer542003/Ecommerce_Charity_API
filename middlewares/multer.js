@@ -7,8 +7,8 @@ function uploadImage(req, res, next) {
             return res.status(400).json({ message: err.message });
         }
         try {
-            console.log(req.file);
-            console.log(req.body);
+            // console.log(req.file);
+            // console.log(req.body);
             
             
             if (!req.file) {

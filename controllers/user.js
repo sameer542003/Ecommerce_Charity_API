@@ -8,11 +8,11 @@ const secret_key = process.env.SECRET
 async function register(req, res) {
     try {
         const { name, email, mobile, password, role } = req.body;
-        console.log(req.body);
+        // console.log(req.body);
 
 
         const existingUser = await User.findOne({ $or: [{ email }, { mobile }], });
-        console.log(existingUser);
+        // console.log(existingUser);
 
 
         if (existingUser) {
@@ -30,7 +30,7 @@ async function register(req, res) {
             password: hashedPassword,
             role: role || "user",
         });
-        console.log(user);
+        // console.log(user);
         let data = await User.insertOne(user);
         console.log(data);
 

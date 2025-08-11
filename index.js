@@ -8,6 +8,8 @@ const url = process.env.URL
 
 const userRoutes=require("./routes/user")
 const categoryRoutes = require("./routes/category")
+const charityRoutes = require("./routes/charity")
+
 
 function connectToMongoDB() {
     try {
@@ -21,7 +23,7 @@ function connectToMongoDB() {
 }
 app.use("/api/v1/users",userRoutes);
 app.use("/api/v1/category", categoryRoutes);
-
+app.use("/api/v1/charity", charityRoutes);
 
 
 app.get("/", (req, res) => {
@@ -29,6 +31,5 @@ app.get("/", (req, res) => {
 })
 app.listen(port, () => {
     connectToMongoDB()
-    console.log("server is running at port 3000");
-
+    console.log(`server is running at port ${port}`);
 })
