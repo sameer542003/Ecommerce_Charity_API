@@ -1,6 +1,10 @@
 const express = require("express")
 const app = express()
 app.use(express.json());
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+
 const mongoose = require("mongoose")
 require("dotenv").config()
 const port = process.env.PORT || 8080
@@ -9,6 +13,8 @@ const url = process.env.URL
 const userRoutes=require("./routes/user")
 const categoryRoutes = require("./routes/category")
 const charityRoutes = require("./routes/charity")
+const productRouter = require("./routes/product");
+
 
 
 function connectToMongoDB() {
@@ -24,6 +30,8 @@ function connectToMongoDB() {
 app.use("/api/v1/users",userRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/charity", charityRoutes);
+app.use("/api/v1/products", productRouter);
+
 
 
 app.get("/", (req, res) => {
