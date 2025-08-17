@@ -14,6 +14,7 @@ const userRoutes=require("./routes/user")
 const categoryRoutes = require("./routes/category")
 const charityRoutes = require("./routes/charity")
 const productRouter = require("./routes/product");
+const addressRouter = require("./routes/address");
 
 
 
@@ -31,6 +32,7 @@ app.use("/api/v1/users",userRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/charity", charityRoutes);
 app.use("/api/v1/products", productRouter);
+app.use("/api/v1/address", addressRouter);
 
 
 
